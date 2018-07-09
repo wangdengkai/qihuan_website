@@ -1,0 +1,139 @@
+<!-- 这是所有页面的基本模板 -->
+<!DOCTYPE html>
+{% load staticfiles %}
+
+
+<html>
+<head>	
+	<link href="{% static 'blog/css/bootstrap.min.css' %}" rel="stylesheet">
+	
+	<script type="text/javascript" src="{% static 'blog/js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'blog/js/jquery.form.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'blog/css/base.css' %}"/>
+	{% block link %} {% endblock link %}
+	<title>{% block title %} 奇幻人生{% endblock title %}</title>
+	<style>
+		span.highlighted{
+			color:red;
+		}
+	</style>
+	
+</head>
+<body>
+<div id="base_top">
+	{% block base_top %}
+	<!--===================标题===============================-->
+
+	<div class="container top_title">
+		<div class="row">
+			<div class="col-xs-12 col-md-12">
+				<h1>奇&nbsp;&nbsp;幻&nbsp;&nbsp;人&nbsp;&nbsp;生</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">					
+					<p>人生如梦,何不放浪形骸</p>					
+			</div>
+			<div class="col-md-4">
+				<p>奇幻人生,给您不一样的人生</p>
+			</div>
+			<div class="col-md-4">				
+						<p>生活如山,且须步步为营</p>							
+			</div>
+		</div>
+		<!--===================导航===============================-->
+		<div class="row">
+			<div class="col-md-12 ">
+				<nav class="top_nav ">
+					<ul class="top_ul nav nav-tabs nav-justified">
+						<li class="nav_li"><a href="#">首页</a></li>
+						<li class="nav_li"><a href="#">创意</a></li>
+						<li class="nav_li"><a href="{% url 'blog:index' %}">博客</a></li>
+						<li class="nav_li"><a href="#">论坛</a></li>
+						<li class="nav_li"><a href="#">商城</a></li>
+						<li class="nav_li"><a href="#">资源</a></li>
+						<li class="nav_li_big">
+							<form role="search" method="get" id="searchform" action="{% url 'haystack_search' %}">
+							<input  class="search" type="search" name="q" required/>
+							<input  class="button" type="submit" name="search" value="搜索">
+							</form>
+						</li>
+					</ul>
+				</nav>
+			</div>
+	
+	</div>
+	
+	{% endblock base_top %}
+	</div>
+<div id="base_middle" class="container">
+	<div id="base_left" class="row">
+		<div class="col-md-2">
+			{% block base_left %}
+
+			{% endblock base_left %}
+		</div>
+	
+
+		<div id="base_center" class="col-md-8">
+			{% block base_center %}
+			{% endblock base_center %}
+		</div>
+
+		<div id="base_right" class="col-md-2">
+			{% block base_right %}
+			{% endblock base_right %}
+		</div>
+	</div>
+</div>
+<div id="base_bottom" class="base_bottom" >
+	<div class="row ">
+		<div class="col-md-12 ">
+			{% block base_bottom %} 
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-2">
+						<ul class="list-group">
+							<li class="list-group-item"><h6 >导航	</h6></li>
+							<li class="list-group-item"><a href="#">首页</a></li>					
+						</ul>
+					</div>
+					<div class="col-md-2 ">
+						<ul class="list-group">
+							<li class="list-group-item"><h6>友情链接</h6></li>
+							<li class="list-group-item"><a href=""></a></li>				
+
+						</ul>
+					</div>
+					<div class="col-md-2 ">
+						<ul class="list-group">
+							<li class="list-group-item"><h6>产品</h6></li>
+							<li class="list-group-item"><a href=""></a></li>
+						</ul>
+					</div>
+					<div class="col-md-2">
+						<ul class="list-group">
+							<li class="list-group-item"><h6>联系</h6></li>
+							<li class="list-group-item"><a href="">地址</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<p class="copy_right">Copyright@2018-2035 奇幻人生版权所有</p>
+					</div>
+					
+				</div>
+		
+			{% endblock base_bottom %}
+		</div>
+
+	</div>	
+</div>
+
+
+</body>
+</html>

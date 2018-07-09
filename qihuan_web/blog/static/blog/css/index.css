@@ -1,0 +1,35 @@
+.text-center{
+	text-align:center;
+}
+#base_center p{
+	text-indent:25px;
+}
+.f-si{	
+	font-size:20px;
+}
+.bd-rd{
+	border-radius:10px;
+}
+.bg-col-gre{
+	background-color:green;
+}
+.bg-col-FAD{
+	background-color: #FADB96;
+}
+.f-col-r{
+	color:red;
+}
+.f-col-b{
+	color:black;
+}
+.mar-gin{
+	margin:0;
+}
+.mar-gin-10{
+	margin:10px;
+}
+.flo-f{
+	float:left;
+}
+
+

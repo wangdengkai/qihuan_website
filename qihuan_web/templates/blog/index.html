@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+
+$.ajaxSetup({
+    data: {csrfmiddlewaretoken: '{{ csrf_token }}' },
+});
+{% block link %}
+	<link rel="stylesheet" href="{% static 'blog/css/index.css' %}"/>
+	<script type="text/javascript" src="{% static 'blog/js/send_post.js' %}"></script>	
+
+
+{% endblock link %}
+
+{% block base_left %}
+	
+
+	<ul class="nav index_get_post" id="index_left">
+		<li><h5 class="text-center bg-col-FAD bd-rd">所有文章</h5></li>
+	{% for post in object_list %}	
+
+			<li><a href="{% url 'blog:detail' post.pk %}" data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}">{{ post.title }}</a></li>
+		
+		
+	{% empty %}
+		<li>暂时没有文章</li>
+	{% endfor %}			
+	</ul>
+	<ul class="nav navbar-nav ul-border getPost">
+		
+				{% if is_paginated %}
+					{% if page_obj.has_previous %}
+						<li  class="f-si bd-rd bg-col-gre "><a class="f-col-r" href="?page={{ page_obj.previous_page_number }}">上一页</a></li>
+					{% endif %}
+					<li><p class="f-col-b mar-gin" href="#" class="current">第{{ page_obj.number }}页/共{{ paginator.num_pages }}页</p></li>
+					{% if page_obj.has_next %}
+						<li  class="f-si bd-rd bg-col-gre"><a class="f-col-r" href="?page={{ page_obj.next_page_number }}">下一页</a></li>
+					{% endif %}
+				{% endif %}
+			
+	</ul>
+
+{% endblock base_left %}
+
+{% block base_center %}
+	{% block sea_post %}
+	{% endblock sea_post %}
+
+	{% block index_post %}
+	<div id="hide_sea">
+		<ul class="sea_ul  index_get_post nav nvabar-nav">
+		{% for post in object_list %}	
+		
+			<li><a href="{% url 'blog:detail' post.pk %}" data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}"><h5 class="text-center">{{ post.title }}</h5></a></li>
+					<p>{{ post.summary }}...</p>
+					<a  class="flo-l" href="{% url 'blog:detail' post.pk %}"  data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}">继续阅读</a>
+					
+			</li>
+		{% empty %}
+	
+				
+		{% endfor %}
+		</ul>
+  	</div>
+
+  
+	{% endblock index_post %}
+	
+	
+			
+	<h2 id="post_title" class="text-center"></h2><br><br>
+	<p id="post_body"></p>
+	
+	
+	<div id="get_common">
+	</div>
+		
+
+{% endblock base_center %}
+
+
+
+
+{% load blog_tags %}
+{% block base_right %}
+	{% get_category as cate_list %}
+	{% get_mark as mark_list %}
+	<ul class="nav" >
+		<li><h5 class="text-center bg-col-FAD bd-rd">文章分类</h5></li>
+		{% for cate_obj in cate_list %}
+			<li>
+				<div class="dropdown mar-gin-10">
+					<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+					{{ cate_obj.name }} ({{ cate_obj.num_post }}篇) 
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu index_get_post" role="menu" aria-labelledby="dropdownMark">
+						{% for post in cate_obj.post_set.all %}
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1"
+							href="{{ post.get_absolute_url }}" data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}">{{ post.title }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</li>
+		{% empty %}
+		<li>暂时没有分类</li>
+		{% endfor %}
+	</ul>
+
+	<ul class="nav">
+
+		<li ><h5 class=" text-center bg-col-FAD bd-rd">文章标签</h5></li>
+		{% for mark_obj in mark_list %}
+			<li>
+				<div class="dropdown  mar-gin-10">
+					<button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
+					{{ mark_obj.name }} ({{ mark_obj.num_post }}篇) 
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu index_get_post" role="menu" aria-labelledby="dropdownMark">
+						{% for post in mark_obj.post_set.all %}
+						<li role="presentation">
+							<a role="menuitem" tabindex="-1"
+							href="{{ post.get_absolute_url }}" data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}">{{ post.title }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+			
+			</li>
+		{% empty %}
+			<li>暂时没有标签</li>
+		{% endfor %}
+	</ul>
+{% endblock base_right %}
+
