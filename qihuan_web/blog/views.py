@@ -58,8 +58,12 @@ def Cal_like_number(post_id,flag=0):
 	flag = int(flag)
 	if flag == 0:
 		//获取点赞数量
-		return post.like_number
+		pass
 	if flag == 1:
 		//增加点赞数量
+		post.like_number +=1
 	if flag == -1:
 		//减少点赞数量
+		post.like_number -=1
+
+	return JsonResponse({'post.like_number':post.like_number})

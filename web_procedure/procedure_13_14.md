@@ -102,5 +102,48 @@ class PostDetailView(DetailView):
 ```
 #blog/views.py
 
+def Cal_like_number(post_id,flag=0):
+	'''
+		功能:获取和设置点赞数量
+		如果flag=0,那么就是获取数量,
+		如果flag等于1,那么就是增加点赞数量.
+		如果flag等于-1,那么就是减少点赞数量.
+	'''
+	# 获取文章对象
+	post = get_object_or_404(Post,pk=post_id)
+	flag = int(flag)
+	if flag == 0:
+		//获取点赞数量
+		pass
+	if flag == 1:
+		//增加点赞数量
+		post.like_number +=1
+	if flag == -1:
+		//减少点赞数量
+		post.like_number -=1
+
+	return JsonResponse({'post.like_number':post.like_number})
+```
+
+6 配置url  blog/urls.py
+
+```
+from django.urls import path,include
+
+from .views import IndexView,PostDetailView,Cal_like_number
+#命令blog命名空间
+app_name="blog"
+urlpatterns =[
+	path('',IndexView.as_view(),name="index"),
+	path('detail/<int:pk>/',PostDetailView.as_view(),name="detail"),
+	path('like/<int:post_id>/<int:flag>/',Cal_like_number,name="like"),
+	# path('common/',include("common.urls")),
+]
+```
+
+7 修改detail模板blog/detail.html,增加点赞标签,和阅读数量标签
+
+```
+
 ```
 
