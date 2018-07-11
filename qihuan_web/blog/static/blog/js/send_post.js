@@ -1,6 +1,11 @@
 $(function(){
+	//设置全局变量来控制是增加还是减少点赞数量
+	like_flag = 'true'
+
 	//获取所有文章列表
 	get_post_detail();	
+	
+
 			
 })
 
@@ -50,8 +55,11 @@ function get_post_detail(){
 						$PostBody.html($show_data)
 
 						
+						
+						// //渲染好文章后,绑定点赞标记
+						
+						$('#cpostlike').click(get_like_number);
 						//渲染好文章后,立马请求评论,要求渲染评论
-					
 						get_common_list($PostId)
 						//请求文章下面的评论表单
 						get_common_form()
@@ -89,7 +97,7 @@ function get_common_list(post_id){
 					
 			})
 
-			
+		
 
 }
 
@@ -139,9 +147,11 @@ function get_common_form()
 								
 					}
 				)
+				return false;
 
 			}
 			)
+
 }
 
 function sendForm($SubCommon){
@@ -178,6 +188,49 @@ function sendForm($SubCommon){
 	$SubCommon.children(".id_form").ajaxForm($subObj);
 }
 
+function get_like_number(){
+		/*
+		这个函数用来增加和减少文章的点赞数量
+		 */
+		
+		
 	
+		//获取标签标记
+		var $cNumer = $('#cpostlike')
+		
+		//判断是增加还是减少点赞数量
+		console.log("---------------")
+		console.log(like_flag)
 
-				
+		//获取标签本身的url,并构造出请求url
+			var $gUrl = $cNumer.prop('href');
+		
+		if(like_flag == 'false'){
+			var reL = new RegExp('/1/');
+			console.log(reL)
+			
+			$gUrl=$gUrl.replace(reL,'/2/');
+			console.log($gUrl)
+			like_flag = 'true';
+		}else{
+			//更改flag,实现点击后再次点击可以取消点赞的效果
+			like_flag = 'false';
+
+		}	
+		
+		
+
+		//发送get请求
+		$.get(
+			$gUrl,
+			null,
+			function(data){
+				$('#likenumber').text(data.like_number)
+			}
+		)
+	
+	//进制冒泡和默认行为
+	return false;	
+
+}
+	

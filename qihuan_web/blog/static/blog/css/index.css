@@ -1,11 +1,12 @@
 .text-center{
 	text-align:center;
 }
-#base_center p{
-	text-indent:25px;
-}
+
 .f-si{	
 	font-size:20px;
+}
+.bd-wd{
+	border-width: 20px;
 }
 .bd-rd{
 	border-radius:10px;
@@ -15,6 +16,9 @@
 }
 .bg-col-FAD{
 	background-color: #FADB96;
+}
+.bg-col-Ye{
+	background-color:yellow;
 }
 .f-col-r{
 	color:red;
@@ -31,5 +35,32 @@
 .flo-f{
 	float:left;
 }
+.flo-r{
+	float:right;
+}
+.continue-read{
+	float:left;
+}
+.te-ind-20{
+	text-indent:50px;
+}
+.like{
+	width:50px;
+	height: 50px;
+	/*background-image:url("..\\images\\like.jpg");*/
+	
+}
+.common{
+	width:50px;
+	height: 50px;
 
-
+}
+.up-top{
+	position:fixed;
+	right:50px;
+	bottom:50px;
+	z-index:999;
+}
+#post_body{
+	text-align: left;
+}

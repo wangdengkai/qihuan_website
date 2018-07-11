@@ -1,7 +1,9 @@
-
+{% load staticfiles %}
 <div>
+	<p class="text-center"><label>作者:</label><span>{{ post.author }}</span>&nbsp;&nbsp;阅读数量:<span class="read_number badge">{{ post.read_number }}</span></p>
 	<p>{{ post.body |safe}}</p><br>
-	<button type="buttton" data-postid="{{ post.pk }}"  data-commonid=0 class="req_common">评论</button>
+	<a href="{% url 'blog:like' post.pk 1 %} " id="cpostlike" class="flo-l"><img  class='like ' src="{% static 'blog/images/like.jpg' %}"/>(<span id="likenumber">{{ post.like_number }}</span>)</a>
+	<a  data-postid="{{ post.pk }}"  data-commonid=0 class="req_common flo-r"><img  class='common ' src="{% static 'blog/images/common.jpg' %}"/>评论</a>
 	<div class="sub_common">
 
 	</div>

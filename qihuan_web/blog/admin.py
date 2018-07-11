@@ -4,13 +4,11 @@ import markdown
 # Register your models here.
 class PostAdmin(admin.ModelAdmin):
 	list_display=['title','author','modify_time','cate_name']
-	search_fields=['title','author','cate_name','marks_name']
+	
 	list_filter=['cate_name','author','marks_name','title']
 	ordering=['title','author']
 	list_editalbe=['title']
 	# date_hierarchy =['moidify_time']
-	list_per_page=5
-
 	def save(self,*args,**kwargs):
 		#如果没有写摘要
 		if not self.summary:

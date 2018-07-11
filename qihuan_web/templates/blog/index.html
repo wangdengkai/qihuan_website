@@ -53,10 +53,9 @@ $.ajaxSetup({
 		{% for post in object_list %}	
 		
 			<li><a href="{% url 'blog:detail' post.pk %}" data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}"><h5 class="text-center">{{ post.title }}</h5></a></li>
-					<p>{{ post.summary }}...</p>
-					<a  class="flo-l" href="{% url 'blog:detail' post.pk %}"  data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}">继续阅读</a>
-					
-			</li>
+			<li class="continue-read" ><p class="te-ind-20" >{{ post.summary }}...&nbsp;&nbsp;</p></li>
+			<li ><a  class="flo-l" href="{% url 'blog:detail' post.pk %}"  data-postid="{{ post.pk }}" data-posttitle="{{ post.title }}">继续阅读</a></li>		
+			
 		{% empty %}
 	
 				
@@ -69,13 +68,18 @@ $.ajaxSetup({
 	
 	
 			
-	<h2 id="post_title" class="text-center"></h2><br><br>
-	<p id="post_body"></p>
+	<h2 id="post_title" class="text-center page-header"></h2>
+	<br>
+	<div id="post_body" class="tex-l flo-l"></div>
 	
 	
-	<div id="get_common">
+	<div class="bg-col-FAD" id="get_common">
 	</div>
 		
+
+	{% block other_move %}
+	<a href="#" class="up-top"><img src="{% static 'blog/images/to_top.png' %}"/></a>
+	{% endblock other_move %}
 
 {% endblock base_center %}
 

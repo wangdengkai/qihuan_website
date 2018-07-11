@@ -87,6 +87,7 @@ class PostDetailView(DetailView):
 		post =super(PostDetailView,self).get_object(queryset=None)
 		#对post的阅读数量增加
 		post.read_number +=1
+		pose.save()
 		#通过markdown对post.body进行渲染
 		post.body = markdown.markdown(post.body,
 								extensions=[
@@ -107,7 +108,7 @@ def Cal_like_number(post_id,flag=0):
 		功能:获取和设置点赞数量
 		如果flag=0,那么就是获取数量,
 		如果flag等于1,那么就是增加点赞数量.
-		如果flag等于-1,那么就是减少点赞数量.
+		如果flag等于2,那么就是减少点赞数量.
 	'''
 	# 获取文章对象
 	post = get_object_or_404(Post,pk=post_id)
@@ -118,9 +119,10 @@ def Cal_like_number(post_id,flag=0):
 	if flag == 1:
 		//增加点赞数量
 		post.like_number +=1
-	if flag == -1:
+	if flag == 2:
 		//减少点赞数量
 		post.like_number -=1
+	post.save()
 
 	return JsonResponse({'post.like_number':post.like_number})
 ```
@@ -144,6 +146,132 @@ urlpatterns =[
 7 修改detail模板blog/detail.html,增加点赞标签,和阅读数量标签
 
 ```
+#detail.html
+
+<div>
+	<p>阅读数量<span class="read_number">{{ post.read_number }}</span></p>
+	<p>{{ post.body |safe}}</p><br>
+	<a href="{% url 'blog:like' post.pk  1 %}">点赞数量:{{ post.like_number }}</a>
+	<button type="buttton" data-postid="{{ post.pk }}"  data-commonid=0 class="req_common">评论</button>
+	<div class="sub_common">
+
+	</div>
+<div>
+```
+
+8 修改send_post.js文件,点击点赞按钮就可以异步发送请求,增加和减少点赞数量.
 
 ```
+function get_post_detail(){
+	/*
+	这个函数是用来为每一文章的标题绑定一个点击事件,事件结果是返回文章的详情,并且将文章的评论列表和评论表单都自动渲染完成
+	采用的方式是异步方式
+	 */
+	//获取所有标题的a标签
+			 var $TitleA=$(".index_get_post a")
+			 console.log($TitleA)
+			//获取文章主题对象
+			var $PostBody =$("#post_body")
+			//获取显示文章标题对象
+			var $PostTitle = $("#post_title")
+			//为所有a标签绑定点击事件
+			// console.log($TitleA[0])
+			
+			//为每一个文章绑定点击事件
+			$TitleA.click(function(){
+				//发送异步请求,
+				// alert($(this))
+				//回调函数
+				var $Durl = $(this).attr("href")
+				console.log($(this))
+				var $Title =$(this).data("posttitle")
+				console.log("post_title")
+				console.log($Title)
+				var $PostId = $(this).data("postid")
+				console.log($PostId)
+				
+				// 点击后发送异步请求,获取文章详情
+				$.get(
+					$Durl,
+					null,
+					function(data){
+						//收到服务器返回的文章内容后,渲染文章内容到页面中
+						
+						
+						$PostTitle.html($Title)
+						var $show_data=data				
+						var $SeaRes = $("#hide_sea")
+						$SeaRes.hide()						
+						$PostBody.html($show_data)
+
+						
+						
+						// //渲染好文章后,绑定点赞标记
+						
+						$('#cpostlike').click(get_like_number);
+						//渲染好文章后,立马请求评论,要求渲染评论
+						get_common_list($PostId)
+						//请求文章下面的评论表单
+						get_common_form()
+
+					}
+					)
+				console.log(false)
+				return false
+			})
+}
+
+
+
+
+function get_like_number(){
+		/*
+		这个函数用来增加和减少文章的点赞数量
+		 */
+		
+		
+	
+		//获取标签标记
+		var $cNumer = $('#cpostlike')
+		
+		//判断是增加还是减少点赞数量
+		console.log("---------------")
+		console.log(like_flag)
+
+		//获取标签本身的url,并构造出请求url
+			var $gUrl = $cNumer.prop('href');
+		
+		if(like_flag == 'false'){
+			var reL = new RegExp('/1/');
+			console.log(reL)
+			
+			$gUrl=$gUrl.replace(reL,'/2/');
+			console.log($gUrl)
+			like_flag = 'true';
+		}else{
+			//更改flag,实现点击后再次点击可以取消点赞的效果
+			like_flag = 'false';
+
+		}	
+		
+		
+
+		//发送get请求
+		$.get(
+			$gUrl,
+			null,
+			function(data){
+				$cNumer.text(data.like_number)
+			}
+		)
+	
+	//进制冒泡和默认行为
+	return false;	
+
+}
+```
+
+## 第十四章 整理美化
+
+1 根据个人的爱好,整理整理吧.
 

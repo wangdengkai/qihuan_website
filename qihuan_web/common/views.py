@@ -1,3 +1,5 @@
+import datetime
+
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404,redirect
 from django.http  import JsonResponse,HttpResponse
@@ -95,7 +97,7 @@ def iter_common(request,common_list,post_pk,common_pk):
 		这个函数提供对取出所有的评论进行构造html的作用.
 	'''
 	#设置响应初始值
-	response="<ul>"
+	response='<ul >'
 	print(response)
 	print("common_list",common_list)
 	print("post_pk",post_pk)
@@ -107,15 +109,21 @@ def iter_common(request,common_list,post_pk,common_pk):
 	# 对这个列表进行遍历渲染
 	if len(common_current_list) > 0:
 		for common in common_current_list:
+			# 	time.strptime(str,fmt='%a %b %d %H:%M:%S %Y')
+			create_time =common.create_time.strftime("%Y-%m-%d  %H:%M:%S %Y")
+		
 			#渲染这个common_post
 			response +="""
-					<li><h5>%s</h5><span>%s</span> </li>
-					<li><button type="buttton" data-postid="%s" data-commonid="%s" class="req_common">回复</button>
+					<li  class="bg-col-Ye f-si">用户名:%s<span class="commonTime flo-r">时间:%s</span></li><br>
+					<li ><div class="bd-rd bd-wd"><span class="te-ind-20">&nbsp;&nbsp;&nbsp;&nbsp;评语:&nbsp;&nbsp;&nbsp;&nbsp;%s</span>
+					 <button type="buttton" data-postid="%s" data-commonid="%s" class="req_common flo-r">回复</button>
 					<div class="sub_common">
 					</div>
-					</li>
+					</div>
 
-					"""%(common.name,common.text,post_pk,common.pk)	
+					</li><br>
+
+					"""%(common.name,create_time,common.text,post_pk,common.pk)	
 			if len(common_list.filter(up_common=common.pk)) > 0:
 				#迭代,对评论的评论进行封装
 				response+="<li>"+iter_common(request,common_list,post_pk,common.pk)+"</li>"
