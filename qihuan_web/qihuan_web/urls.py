@@ -18,12 +18,14 @@ from django.urls import path, include
 
 
 
-urlpatterns = [
+urlpatterns = [   
     path('admin/', admin.site.urls),
     path('common/',include('common.urls')),  
     path('blog/common/',include('common.urls')),
     path('search/common/',include('common.urls')),
     path('search/',include('haystack.urls')),
     path('blog/',include('blog.urls')),
+    path('client/',include('client.urls')),
+    path('users',include('django.contrib.auth.urls')),
     
 ]

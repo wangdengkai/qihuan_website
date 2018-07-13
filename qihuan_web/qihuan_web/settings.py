@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'haystack',
+    'client.apps.ClientConfig',
     
 
     'django.contrib.admin',

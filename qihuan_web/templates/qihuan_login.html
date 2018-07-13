@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>奇幻人生登录页面</title>
+	<link rel="stylesheet" href="E:\Development\qihuan_website\qihuan_website\qihuan_web\blog\static\blog\css\bootstrap.min.css"/>
+	<script src="E:\Development\qihuan_website\qihuan_website\qihuan_web\blog\static\blog\js\jquery.min.js"></script>
+	<script src="E:\Development\qihuan_website\qihuan_website\qihuan_web\blog\static\blog\js\bootstrap.min.js"></script>
+	<script type="text/javascript" src="E:\Development\qihuan_website\qihuan_website\qihuan_web\blog\static\blog\js\vue.js"></script>
+	<link rel="stylesheet" href="E:\Development\qihuan_website\qihuan_website\qihuan_web\client\static\client\css\qihuan_login.css"/>
+		
+		
+
+</head>
+<body>
+	<div class="row" id="login">
+	<div class="form-group col-lg-12 col-lg-offset-5">
+		<form :action="(uFlag && pFlag)?'http://www.baidu.com':'javascript:;'" role="form">
+			<div class="row">
+				<div class="col-lg-2">
+					<br>
+					<label>用户名:</label>
+					<input class="form-control" type="text" placeholder="请输入用户名" v-model="username" @blur="auditingUser" @click="close_usemsg"/>
+					<span class="col-red">{{ usermsg }} </span><br>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2">
+					<label>密&nbsp;&nbsp;码:</label>
+					<input class="form-control" type="password" placeholder="请输入密码" v-model="password" @blur="auditingPassword" @click="close_passmsg"/>
+					<span class="col-red">{{ passmsg }} </span><br>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-2">
+					<button type="submit" class="btn btn-default"  >登录</button>
+					<button type="register" class="btn btn-default">
+					注册</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	</div>
+
+	<script src="E:\Development\qihuan_website\qihuan_website\qihuan_web\client\static\client\js\qihuan_login.js">
+		
+	</script>
+</body>
+</html>
