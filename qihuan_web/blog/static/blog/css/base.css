@@ -61,3 +61,6 @@ li{
 	text-align: center;
 	background-color:gray;
 }
+.no-listy{
+	list-style: none;
+}

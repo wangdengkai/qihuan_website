@@ -1,20 +1,17 @@
 
-{%  extends 'base.html' %}
+{%  extends 'account/base_auth.html' %}
 
 {% load staticfiles %}
 
 
-{% block link %}
-	     <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css">
-{% endblock link %}
 {% block main_content %}
-
-
 
 <div class="flex-center">
     <div class="container">
         <div class="flex-center">
             <div class="unit-1-2 unit-1-on-mobile">
+
+                
                 <h3 class="text-center">注册</h3>
                 <form class="form" action="{% url 'client:register' %}" method="post">
                     {% csrf_token %}
@@ -30,11 +27,17 @@
                 </form>
                 <div class="flex-center top-gap text-small">
                     <a href="{% url 'login' %}">已有账号登录</a>
-                </div>
-            </div>
+                </div>           
+               
+        
+
+
+           </div>
         </div>
     </div>
 </div>
 
+                
+           
 
 {% endblock main_content %}
