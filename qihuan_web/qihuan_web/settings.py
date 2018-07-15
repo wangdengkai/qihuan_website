@@ -30,6 +30,8 @@ INSTALLED_APPS = [
     'common.apps.CommonConfig',
     'haystack',
     'client.apps.ClientConfig',
+    'qihuan.apps.QihuanConfig',
+
     
 
     'django.contrib.admin',
@@ -39,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
+    'allauth',
+
+   
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -121,6 +127,10 @@ USE_L10N = True
 
 USE_TZ = False
 
+#设置登录和登出后默认跳转
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -139,3 +149,19 @@ HAYSTACK_CONNECTIONS ={
 HAYSTACK_SEARCH_RESULTS_PER_PAGE =5
 # 设置为么当有文章更新时,就更新索引.
 HARSTACK_SIGNAL_PROCESSOR ='haystack.signals.RealtimeSignalProcessor'
+
+#生产环境,设置密码邮箱验证------------------------------------------------
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+#  ---------------------------------------------------------
+#  Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+ 
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'smtp.qq.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = '1017762632@qq.com'
+EMAIL_HOST_PASSWORD = 'onnommchvdpzbbae'
+DEFAULT_FROM_EMAIL = 'qihaun<1017762632@qq.com>'
+#  ---------------------------------------------------------

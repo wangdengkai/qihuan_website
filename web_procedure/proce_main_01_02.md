@@ -79,7 +79,6 @@ urlpatterns = [
     path('client/',include('client.urls')),
     
 ]
-
 ```
 
 5 设置模板
@@ -207,3 +206,4 @@ urlpatterns = [
 
 ```
 
+8 

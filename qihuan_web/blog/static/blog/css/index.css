@@ -24,13 +24,13 @@
 	color:red;
 }
 .f-col-b{
-	color:black;
+	color:gray;
 }
 .mar-gin{
 	margin:0;
 }
-.mar-gin-10{
-	margin:10px;
+.mar-gin-20{
+	margin-left:20px;
 }
 .flo-f{
 	float:left;
@@ -63,4 +63,16 @@
 }
 #post_body{
 	text-align: left;
+}
+.wShow{
+	display:none;
+}
+pre{
+	
+	white-space:pre-wrap;
+    word-wrap:break-word;
+
+}
+.errorlist {
+   color: red;
 }

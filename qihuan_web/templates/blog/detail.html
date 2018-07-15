@@ -1,10 +1,81 @@
-{% load staticfiles %}
-<div>
-	<p class="text-center"><label>作者:</label><span>{{ post.author }}</span>&nbsp;&nbsp;阅读数量:<span class="read_number badge">{{ post.read_number }}</span></p>
-	<p>{{ post.body |safe}}</p><br>
-	<a href="{% url 'blog:like' post.pk 1 %} " id="cpostlike" class="flo-l"><img  class='like ' src="{% static 'blog/images/like.jpg' %}"/>(<span id="likenumber">{{ post.like_number }}</span>)</a>
-	<a  data-postid="{{ post.pk }}"  data-commonid=0 class="req_common flo-r"><img  class='common ' src="{% static 'blog/images/common.jpg' %}"/>评论</a>
-	<div class="sub_common">
+{% extends 'blog/index.html' %}
 
-	</div>
-<div>
+{% load staticfiles %}
+{% block base_slider %}
+        <!-- TITLE -->
+        <div id="outertitle">
+        	<div class="container">
+                <div class="row">
+                <div class="twelve columns">
+                	<h1 class="pagetitle">{{ post.title }}</h1>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TITLE -->
+{% endblock base_slider %}
+
+{% block section %}
+                    
+                            <section class="content">
+                            
+                                <article class="post">
+                                    
+                                    <div class="entry-utility"><a href="#">{{ post.author }}|</a>  {{ post.modify_time }}                                     
+                                    </div>
+                                    <div class="postimg frame">
+                                        <img src="images/content/post1.jpg" alt=""  />
+                                    </div>
+                                    <div class="entry-content">
+                                        {{ post.body |safe }}
+                                    </div>
+                                </article>
+                                
+								<h4>更多</h4>     
+                                <ul class="recent-post">
+                                    <li><a href="#">上一篇文章名</a></li>
+                                    <li><a href="#">下一篇文章名</a></li>                                 
+                                </ul>  
+                                
+								<div id="entry-author-info">
+                                	<h4>作者详情</h4>
+                                    <div id="author-avatar">
+                                        <img alt="" src="images/content/author.gif" class="frame">                                
+                                    </div><!-- author-avatar -->
+                                    <div id="author-description">
+                                        <div class="author">{{ post.author }}</div>
+                                        <p>这是关于作者的介绍. 这是关于作者的介绍.这是关于作者的介绍.这是关于作者的介绍.这是关于作者的介绍.这是关于作者的介绍.这是关于作者的介绍.这是关于作者的介绍.这是关于作者的介绍.这是关于作者的介绍. </p>
+                                    <ul class="sn">
+                                        <li><a href="#" title="Twitter"><span class="icon-img twitter"></span></a></li>
+                                        <li><a href="#" title="Facebook"><span class="icon-img facebook"></span></a></li>
+                                        <li><a href="#" title="Pinterest"><span class="icon-img pinterest"></span></a></li>
+                                    </ul>                              
+                                    </div><!-- author-description	-->
+                                    <div class="clear"></div>
+                                </div>  
+
+                                <a href="{% url 'blog:like' post.pk 1 %} " id="cpostlike" class="flo-l"><img  class='like ' src="{% static 'blog/images/like.jpg' %}"/>(<span id="likenumber">{{ post.like_number }}</span>)</a>
+                                
+                                <a  id="postcom" data-postid="{{ post.pk }}"  data-commonid=0 class="req_common flo-r">
+                                <img  class='common ' src="{% static 'blog/images/common.jpg' %}"/>评论</a>
+                                
+
+                                <div class="sub_common">                        
+								<section id="comment">
+
+                                    
+                                </section>                       
+                                
+                            </section>
+                            
+ 						</div>
+                     
+                    </section>
+{% endblock section %}
+
+
+
+{% block add_index_js %}
+<script type="text/javascript" src="{% static 'blog/js/send_post.js' %}"/> 
+  
+{% endblock add_index_js %}

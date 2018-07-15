@@ -1,9 +1,10 @@
 $(function(){
 	//设置全局变量来控制是增加还是减少点赞数量
 	like_flag = 'true'
-
+	// 获取所有评论
+	get_common_list()
 	//获取所有文章列表
-	get_post_detail();	
+	// get_post_detail();	
 	
 
 			
@@ -72,14 +73,17 @@ function get_post_detail(){
 }
 
 
-function get_common_list(post_id){
+function get_common_list(){
 		/*
 		这是为了获取每一个文章下面的评论列表.
 		在这里发送异步get请求,获取列表
 		接受一个文章的id
 		 */
 			//获取标签,将评论渲染在其中
-			var $GetCommon =$("#get_common")
+			var $GetCommon =$("#comment")
+			var post_id = $("#postcom").data('postid')
+			console.log("-------")
+			console.log(post_id)
 			//请求url
 			var $Url ="/common/getcommon/"+post_id+"/"
 			
@@ -126,7 +130,7 @@ function get_common_form()
 				var $comid = $(this).data("commonid")				
 
 				//请求的url
-				var $Myurl = "common/common/"+$(this).data("postid")+"/"+$comid+"/";
+				var $Myurl = "localhost:8000/common/common/"+$(this).data("postid")+"/"+$comid+"/";
 				var $SubCommon =$(this).next()
 				//发送get请求
 				$.get

@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+   
+
+{% block current_menu %}
+                    <ul id="topnav" class="sf-menu">                        
+                        <li><a href="{% url 'qihuan:index' %}">首页</a></li>
+                        <li><a href="{% url 'qihuan:about' %}">相关</a>
+                            <ul>
+                                <li><a href="{% url 'qihuan:forum' %}">论坛</a></li> 
+                                
+                                <li><a href="javascript:;">下载</a>
+                                    <ul>
+                                        <li><a href="#">项目</a></li>
+                                        <li><a href="#">文章</a></li>
+                                        <li><a href="#">图片</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
+                        <li><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
+                        <li><a href="{% url 'blog:index' %}">博客</a></li>
+                        <li  class="current"><a href="{% url 'qihuan:contact' %}">联系</a></li>  
+                        <li><a href="javascript:;">商城</a></li>  
+                    </ul><!-- topnav -->
+  {% endblock current_menu %}
+
+            
+         {% block base_slider %}  
+        <!-- TITLE -->
+        <div id="outertitle">
+        	<div class="container">
+                <div class="row">
+              	<div class="twelve columns">
+                	<h1 class="pagetitle">联系我们</h1>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TITLE -->
+        {% endblock base_slider %}
+        
+        {% block main_content %}
+        <!-- MAIN CONTENT -->
+        <div id="outermain">
+        	<div class="container">
+                <div class="row">
+                	<section id="maincontent" class="twelve columns">
+                    
+                        <section class="content">
+
+							<div class="row">
+                            	<div class="one_half columns">
+                                	<h4>在下面提交你的问题</h4>
+                                    <p>技术问题,网站设计建议,bug提交等等,我们衷心欢迎您与我们交流,与我们分享共同进步.建议您将问题描述清晰,突出重点,详细描述,以免我们误解您的意思,沟通是解决一切问题的f</p>
+                                    <div id="contactform">
+                                    <form id="contact" action="#">
+                                      <fieldset>
+                                          <span class="error" id="name_error">请输入姓名!</span>
+                                          <span class="error" id="email_error">请输入邮箱地址 !</span>
+                                          <span class="error" id="email_error2">请输入邮箱地址!</span>
+                                          <span class="error" id="msg_error">请输入消息 !</span>
+                                          <label for="name" id="name_label">姓名 <span class="required">(必填)</span></label>
+                                          <input type="text" name="name" id="name" size="50" value="" class="text-input" />
+                                          <label for="email" id="email_label">邮箱 <span class="required">(必填)</span></label>
+                                          <input type="text" name="email" id="email" size="50" value="" class="text-input" />
+                                          <label for="subject" id="subject_label">主题</label>
+                                          <input type="text" name="subject" id="subject" size="50"  value="" class="text-input" />
+                                          <label for="msg" id="msg_label">消息 <span class="required">(必填)</span></label>
+                                          <textarea rows="10" name="msg" id="msg" class="text-input"></textarea>
+                                          <br />
+                                          <input type="submit" name="submit" class="button" id="submit_btn" value="发送消息"/>
+                                      </fieldset>
+                                    </form>
+                                    </div><!-- end contactform -->
+                                </div>
+                            	<div class="one_half columns">
+                                	<h4>联系信息</h4>
+                                    <div class="frame"><iframe src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Jalan+Kemanggisan+Utama,+Jakarta,+Indonesia&amp;sll=37.0625,-95.677068&amp;sspn=46.092115,79.013672&amp;ie=UTF8&amp;hq=&amp;hnear=Jalan+Kemanggisan+Utama,+Jakarta+Barat,+Jakarta,+Indonesia&amp;ll=-6.189793,106.7908&amp;spn=0.016639,0.034246&amp;z=14&amp;iwloc=A&amp;output=embed" style="width:100%; height:217px; border:0; margin:0 0 0px 0; display:block" ></iframe></div>
+                                     <br><br>
+
+									<h4>Q I H U A N 联系方式</h4>
+                                    <ul class="dotted">
+                                        <li><img src="images/icon/icon-c1.png" alt="" /><strong>Address:</strong>中国陕西省西安市</li>
+                                        <li><img src="images/icon/icon-c2.png" alt="" /><strong>Phone:</strong> +0 123 45678</li>
+                                        <li><img src="images/icon/icon-c3.png" alt="" /><strong>Fax:</strong> +0 456 78999</li>
+                                        <li><img src="images/icon/icon-c4.png" alt="" /><strong>Email:</strong><a href="mailto:testyourmail@email.com"> wangdengkaiwy@163.com</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+
+
+                        </section>
+                    
+                	</section>
+                </div>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+        
+{% endblock main_content %}
+
+
+
+
+{% block add_js %}
+
+<!-- Form Contact Script -->
+<script type="text/javascript" src="{% static 'qihuan/js/contact.js' %}"></script>
+
+{% endblock add_js %}
+
+
+
+
+
+
+
+
+

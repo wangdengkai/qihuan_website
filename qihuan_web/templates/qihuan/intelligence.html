@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+
+{% block current_menu %}
+                    <ul id="topnav" class="sf-menu">                        
+                        <li><a href="{% url 'qihuan:index' %}">首页</a></li>
+                        <li><a href="{% url 'qihuan:about' %}">相关</a>
+                            <ul>
+                                <li><a href="{% url 'qihuan:forum' %}">论坛</a></li> 
+                                
+                                <li><a href="javascript:;">下载</a>
+                                    <ul>
+                                        <li><a href="#">项目</a></li>
+                                        <li><a href="#">文章</a></li>
+                                        <li><a href="#">图片</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
+                        <li   class="current"><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
+                        <li><a href="{% url 'blog:index' %}">博客</a></li>
+                        <li><a href="{% url 'qihuan:contact' %}">联系</a></li>  
+                        <li><a href="javascript:;">商城</a></li>  
+                    </ul><!-- topnav -->
+         {% endblock current_menu %}
+
+
+{% block base_slider %}
+        
+        <!-- TITLE -->
+        <div id="outertitle">
+        	<div class="container">
+                <div class="row">
+                <div class="twelve columns">
+                	<h1 class="pagetitle">人工智能</h1>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TITLE -->
+{% endblock base_slider %}
+
+{% block main_content %}
+
+        <!-- MAIN CONTENT -->
+        <div id="outermain">
+        	<div class="container">
+                <div class="row">
+                	<section id="maincontent" class="twelve columns">
+                    
+                        <section class="content">
+                            <!-- Begin Portfolio Nav -->
+                            <ul id="filter">
+                                <li class="current"><a href="#" data-filter="*">全部</a></li>
+                                <li><a href="#" data-filter=".illustration">图像</a></li>
+                                <li><a href="#" data-filter=".design">语音</a></li>
+                                <li><a href="#" data-filter=".branding">自动化</a></li>
+                            </ul> 
+                            <!-- End Portfolio Nav --> 
+                            <div class="clear"></div>
+							<!-- Begin Portfolio Items -->
+                            <div id="ts-display" class="row">
+                                    <div class="four columns illustration">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_1.jpg' %}" data-rel="prettyPhoto[mixed]" >
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_1.jpg' %}" alt=""/>
+                                            </a>						
+                                        </div>
+                                    </div>
+                                    <div class="four columns design">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_2.jpg' %}" data-rel="prettyPhoto[mixed]" >
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_2.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+            
+                                    <div class="four columns illustration">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_3.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_3.jpg' %}" alt=""/></a>						
+                                        </div>
+                                    </div>
+            
+                                    <div class="four columns branding">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_4.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_4.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    <div class="four columns design">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_5.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_5.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    <div class="four columns illustration">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_6.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_6.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="four columns branding">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_7.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_7.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    <div class="four columns design">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_8.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_8.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    <div class="four columns illustration">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_9.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_9.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="four columns branding">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_10.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_10.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    <div class="four columns design">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_11.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_11.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+                                    <div class="four columns illustration">
+                                        <div class="img-wrapper">
+                                            <a class="image" href="{% static 'qihuan/images/content/pf/pf3_12.jpg' %}" data-rel="prettyPhoto[mixed]" >                                            
+                                            <div class="rollover">
+                                            <div class="text-wrapper">
+                                            	<div class="text">
+                                                    <h2>暂未发布</h2>
+                                                    <p>正在紧急上线中</p>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <img src="{% static 'qihuan/images/content/pf/pf3_12.jpg' %}" alt=""/>	</a>					
+                                        </div>
+                                    </div>
+
+                            </div>
+                            <!-- End Portfolio Items -->
+
+                        </section>
+                    
+                	</section>
+                </div>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+{% endblock main_content %}  
+    
+
+
+{% block add_js %}
+
+<!-- jQuery Isotope -->
+<script type="text/javascript" src="{% static 'qihuan/js/jquery.isotope.min.js' %}"></script>
+
+<script>
+jQuery(document).ready(function(){
+
+    var $container = $('#ts-display');
+    
+    $container.isotope();
+    
+    $('#filter a').click(function(){
+        
+        $('#filter li').removeClass('current');
+        $(this).parent('li').addClass('current');
+        var selector = $(this).attr('data-filter');
+        $container.isotope({ filter: selector });
+        return false;
+        
+    });
+    
+    jQuery(window).resize(function() {
+        $container.isotope('reLayout');
+    });
+
+});
+</script>
+{% endblock add_js %}

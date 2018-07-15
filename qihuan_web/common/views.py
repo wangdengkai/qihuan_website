@@ -82,12 +82,11 @@ def get_post_common(request,post_pk,common_pk=0):
 	# # # //获得post对象里的所有common
 	common_list=post.common_set.all()
 	
-	
+	response='<h2>%s个评论</h2><ol class="commentlist">'%len(common_list)
 	# # # //对所有common进行封装
-	response=iter_common(request,common_list,post_pk,common_pk)	
+	response=iter_common(request,common_list,post_pk,common_pk)+"</ol>"	
 	
 
-	# return HttpResponse("hhahahah")
 	
 	
 	return HttpResponse(response)
@@ -97,11 +96,8 @@ def iter_common(request,common_list,post_pk,common_pk):
 		这个函数提供对取出所有的评论进行构造html的作用.
 	'''
 	#设置响应初始值
-	response='<ul >'
-	print(response)
-	print("common_list",common_list)
-	print("post_pk",post_pk)
-	print("common_pk",common_pk)
+	response="<li>"
+
 	# 从commonlist中取出所有的common_pk 等于common的id的对象列表
 	common_current_list = common_list.filter(up_common=common_pk)	
 	print("common_current_list",common_current_list)
@@ -111,26 +107,31 @@ def iter_common(request,common_list,post_pk,common_pk):
 		for common in common_current_list:
 			# 	time.strptime(str,fmt='%a %b %d %H:%M:%S %Y')
 			create_time =common.create_time.strftime("%Y-%m-%d  %H:%M:%S %Y")
-		
+			# img_url ="images/content/avatar.gif"
 			#渲染这个common_post
-			response +="""
-					<li  class="bg-col-Ye f-si">用户名:%s<span class="commonTime flo-r">时间:%s</span></li><br>
-					<li ><div class="bd-rd bd-wd"><span class="te-ind-20">&nbsp;&nbsp;&nbsp;&nbsp;评语:&nbsp;&nbsp;&nbsp;&nbsp;%s</span>
-					 <button type="buttton" data-postid="%s" data-commonid="%s" class="req_common flo-r">回复</button>
-					<div class="sub_common">
-					</div>
-					</div>
+			response +="""				
 
-					</li><br>
+					<div class="comment-body">
+	                    <div class="avatar-img frame">
+	                    	<img src="--" alt="" class="avatar"/>
+	                    </div>
+	                		<cite class="fn"><a href="#">用户名:%s</a> <span class="commonTime flo-r">时间:%s</span></cite>
+	                    <div class="commenttext">
+	                        <p>%s</p>
+	                    </div>
+	                     <button type="buttton" data-postid="%s" data-commonid="%s" class="req_common flo-r">回复</button>
+	                     <div class="sub_common">
+						</div>
+	                </div>
 
 					"""%(common.name,create_time,common.text,post_pk,common.pk)	
 			if len(common_list.filter(up_common=common.pk)) > 0:
 				#迭代,对评论的评论进行封装
-				response+="<li>"+iter_common(request,common_list,post_pk,common.pk)+"</li>"
+				response+="<ol>"+iter_common(request,common_list,post_pk,common.pk)+"</ol>"
 		
 
 		
-	response+="</ul>"
+	response+="</li>"
 
 	return response
 	

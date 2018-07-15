@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block current_menu %}
+                    <ul id="topnav" class="sf-menu">                        
+                        <li><a href="{% url 'qihuan:index' %}">首页</a></li>
+                        <li><a href="{% url 'qihuan:about' %}">相关</a>
+                            <ul>
+                                <li><a href="{% url 'qihuan:forum' %}">论坛</a></li> 
+                                
+                                <li><a href="javascript:;">下载</a>
+                                    <ul>
+                                        <li><a href="#">项目</a></li>
+                                        <li><a href="#">文章</a></li>
+                                        <li><a href="#">图片</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li    class="current"><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
+                        <li><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
+                        <li><a href="{% url 'blog:index' %}">博客</a></li>
+                        <li><a href="{% url 'qihuan:contact' %}">联系</a></li>  
+                        <li><a href="javascript:;">商城</a></li>  
+                    </ul><!-- topnav -->
+{% endblock current_menu %}
+    
+        {% block base_slider %}        
+        <!-- TITLE -->
+        <div id="outertitle">
+        	<div class="container">
+                <div class="row">
+                <div class="twelve columns">
+                	<h1 class="pagetitle">爬虫</h1>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- END TITLE -->
+        {% endblock base_slider %}
+{% block main_content %}
+        <!-- MAIN CONTENT -->
+        <div id="outermain">
+        	<div class="container">
+                <div class="row">
+                	<section id="maincontent" class="twelve columns">
+                    
+                        <section class="content">
+
+							<div class="row">
+                            	<div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s1.png' %}" alt="" />
+                                	<h2>简单爬虫</h2>
+                                    <div class="separator"></div>
+                                    <p>这个项目是初步学习爬虫的,爬取一些简单的基本的信息.</p>
+                                    </div>
+                                </div>
+                                <div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s2.png' %}" alt="" />
+                                	<h2>进阶爬虫</h2>
+                                    <div class="separator"></div>
+                                    <p>这个项目,是结合了一些框架,进行了爬取一些大型网站.</p>
+                                    </div>
+                                </div>
+                                <div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s3.png' %}" alt="" />
+                                	<h2>高级爬虫</h2>
+                                    <div class="separator"></div>
+                                    <p>这个项目是爬虫高级项目,爬虫高级技术分析讲解</p>
+                                    </div>
+                                </div>
+                                <div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s4.png' %}" alt="" />
+                                	<h2>爬虫网络信息</h2>
+                                    <div class="separator"></div>
+                                    <p>这个案列用来爬虫网络关键字相关的数据.</p>
+                                    </div>
+                                </div>
+                            	<div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s5.png' %}" alt="" />
+                                	<h2>爬虫股票</h2>
+                                    <div class="separator"></div>
+                                    <p>这个项目是用来爬虫股票相关信息的</p>
+                                    </div>
+                                </div>
+                                <div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s6.png' %}" alt="" />
+                                	<h2>暂时无</h2>
+                                    <div class="separator"></div>
+                                    <p>这个项目暂未开发,静待好消息.</p>
+                                    </div>
+                                </div>
+                                <div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s7.png' %}" alt="" />
+                                	<h2>暂时无</h2>
+                                    <div class="separator"></div>
+                                    <p>这个项目暂未开发,静待好消息.</p>
+                                    </div>
+                                </div>
+                                <div class="one_fourth columns">
+                                	<div class="box">
+                                	<img src="{% static 'qihuan/images/icon/icon-s8.png' %}" alt="" />
+                                	<h2>暂时无</h2>
+                                    <div class="separator"></div>
+                                    <p>这个项目暂未开发,静待好消息.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+                    
+                	</section>
+                </div>
+            </div>
+        </div>
+        <!-- END MAIN CONTENT -->
+{% endblock main_content %}     
+       

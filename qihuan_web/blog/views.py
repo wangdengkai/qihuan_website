@@ -27,7 +27,7 @@ class IndexView(ListView):
 	template_name = "blog/index.html"
 	context_object_name = "post_list"
 	#指定paginate_by属性后自动开启分页功能,其值代表每一页包含多少篇文章
-	paginate_by = 5
+	paginate_by = 10
 	
 class PostDetailView(DetailView):
 	'''
