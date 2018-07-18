@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+					{% block current_menu %}
+                    <ul id="topnav" class="sf-menu">                        
+                        <li ><a href="{% url 'qihuan:index' %}">首页</a></li>
+                        <li><a href="{% url 'qihuan:web' %}">网站开发</a>
+                           
+                        </li>
+                        <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
+                        <li><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
+                        <li><a href="{% url 'blog:index' %}">博客</a></li>
+                        <li class="current"><a href="{% url 'qihuan:download' %}">下载</a></li>  
+                        <li><a href="https://github.com/wangdengkai?tab=repositories">MY GIT</a></li>  
+                    </ul><!-- topnav -->
+                    {% endblock current_menu %}
+
+
+   {% block main_content %}
+
+                <div class="list-group">
+                    <a href="Javascript:;" class="list-group-item active">
+                        <h4 class="list-group-item-heading">
+                            项目代码下载(点击下载)
+                        </h4>
+                    </a>
+
+                    {% for d_project in d_project_list %}
+
+                        {% if not d_project.is_run %}
+                            <a href="{{ d_project.pro_href }}" class="list-group-item">
+                                <h4 class="list-group-item-heading">
+                                    {{ d_project.pro_name }}
+                                </h4>
+                                <p class="list-group-item-text">
+                                    {{ d_project.pro_info }}
+                                </p>
+                            </a>                            
+
+                        {% endif %}
+                        
+                            
+                    {% empty %}
+                        <h5>暂时没有资源</h5>
+
+                    {% endfor %}
+            </div>
+            
+        
+   {% endblock main_content %}
+
+
+
+
+
+
+
+{% block add_js %}
+
+ <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script  src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% endblock add_js %}

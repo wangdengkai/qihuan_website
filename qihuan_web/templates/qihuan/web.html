@@ -1,38 +1,34 @@
 {% extends 'qihuan/reptile.html' %}
-
 {% load staticfiles %}
 
 
-{% block current_menu %}
+ {% block current_menu %}
                     <ul id="topnav" class="sf-menu">                        
                         <li><a href="{% url 'qihuan:index' %}">首页</a></li>
-                        <li><a href="{% url 'qihuan:web' %}">网站开发</a>                           
+                        <li  class="current"><a href="{% url 'qihuan:web' %}">网站开发</a>
+                            
                         </li>
                         <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
-                        <li   class="current"><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
+                        <li><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
                         <li><a href="{% url 'blog:index' %}">博客</a></li>
                         <li><a href="{% url 'qihuan:download' %}">下载</a></li>  
-                        <li><a href="https://github.com/wangdengkai?tab=repositories">MyGit</a></li>  
+                        <li><a href="https://github.com/wangdengkai?tab=repositories">MyGit</a></li>    
                     </ul><!-- topnav -->
          {% endblock current_menu %}
 
-
-{% block base_slider %}
-        
+    
+        {% block base_slider %}
         <!-- TITLE -->
         <div id="outertitle">
         	<div class="container">
                 <div class="row">
                 <div class="twelve columns">
-                	<h1 class="pagetitle">人工智能</h1>
+                	<h1 class="pagetitle">web 开发</h1>
                 </div>
                 </div>
             </div>
         </div>
         <!-- END TITLE -->
-{% endblock base_slider %}
-
-
-    
-
-
+        {% endblock base_slider %}
+}
+        
