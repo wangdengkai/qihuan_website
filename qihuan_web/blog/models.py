@@ -41,6 +41,8 @@ class Post(models.Model):
 	#点赞数量
 	like_number = models.IntegerField(verbose_name="点赞数量",default=0)
 
+	#图片连接
+	post_img = models.ImageField(upload_to="article_index",verbose_name="文章封面图片",default=0,)
 
 	def __str__(self):		
 		return self.title

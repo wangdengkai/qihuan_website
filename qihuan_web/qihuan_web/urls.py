@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
-
+from django.conf.urls.static import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [   
    
     path('admin/', admin.site.urls),
     path('common/',include('common.urls')),
-   
+    
     path('search/',include('haystack.urls')),
     path('blog/',include('blog.urls')),
     path('client/',include('client.urls')),
@@ -30,3 +30,4 @@ urlpatterns = [
     path('',include('qihuan.urls')),
     
 ]
+urlpatterns +=static('/media/', document_root=MEDIA_ROOT)

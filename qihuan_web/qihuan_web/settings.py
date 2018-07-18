@@ -78,6 +78,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -186,3 +187,7 @@ SITE_IDSITE_ID = 1
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 
+#设置图片字段的显示
+MEDIA_DIR =os.path.join(BASE_DIR,'media')
+MEDIA_ROOT =MEDIA_DIR
+MEDIA_URL = '/media/'

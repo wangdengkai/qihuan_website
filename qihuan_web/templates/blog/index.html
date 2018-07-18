@@ -15,19 +15,13 @@
                             <ul>
                                 <li><a href="{% url 'qihuan:forum' %}">论坛</a></li> 
                                 
-                                <li><a href="javascript:;">下载</a>
-                                    <ul>
-                                        <li><a href="#">项目</a></li>
-                                        <li><a href="#">文章</a></li>
-                                        <li><a href="#">图片</a></li>
-                                    </ul>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
                         <li><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
                         <li  class="current"><a href="{% url 'blog:index' %}">博客</a></li>
-                        <li><a href="{% url 'qihuan:contact' %}">联系</a></li>  
+                        <li><a href="javascript:;">下载</a></li>  
                         <li><a href="javascript:;">商城</a></li>  
                     </ul><!-- topnav -->
          {% endblock current_menu %}
@@ -59,15 +53,19 @@
                         <div class="padcontent">
                         {% block section %}
                             <section class="content">
+                            {% block post_content %}
+
                             {% for post in object_list %}
                                 <article class="post">
                                     <h2 class="posttitle"><a href="{% url 'blog:detail' post.pk %}">{{ post.title }}</a></h2>
                                     <div class="entry-utility">
                                         {{ post.modify_time }} <a href="#">{{ post.author }}</a>
                                     </div>
-                                    <div class="postimg frame">
-                                        <img src="{% static 'qihuan/images/content/post1.jpg' %}" alt=""  />
-                                    </div>
+                                    {% if post.post_img != '0' %}
+                                        <div class="postimg frame">
+                                            <img src="{{ post.post_img.url }}" alt=""  />
+                                        </div>
+                                    {% endif %}
                                     <div class="entry-content">
                                         <p>{{ post.summary }}</p>
                                         <a href="{% url 'blog:detail' post.pk %}" class="button">查看详情</a>
@@ -77,7 +75,7 @@
                                     <p>暂时没有文章</p>
                             {% endfor %}
                                
-                                
+                            {% endblock post_content %}  
                                 <div class="wp-pagenavi">
                                     {% if is_paginated %}
                                         {% if page_obj.has_previous %}
@@ -112,8 +110,9 @@
                                         <ul class="rp-widget">
                                         {% hotspot_post as hotpost %}
                                         {% for hpost in hotpost %}
+                                            {% post_small_left forloop.counter0 as img_url %}
                                             <li>
-                                                <a href="{% url 'blog:detail' hpost.pk %}" class="frame"><img  alt="" src="{% static 'qihuan/images/content/post-small1.jpg' %}"></a>
+                                                <a href="{% url 'blog:detail' hpost.pk %}" class="frame"><img  alt="" src="{% static img_url %}"></a>
                                                 <div class="indentleft">
                                                 <h3><a href="{% url 'blog:detail' hpost.pk %}">{{ hpost.title }}</a></h3>
                                                 <span class="smalldate">{{ hpost.modify_time }}</span>
@@ -131,9 +130,10 @@
                                         {% recent_post_all  as new_list %}
                                        
                                         {% for po_new in new_list %}
+                                            {% post_small_img forloop.counter0 as img_url %}
                                             
                                             <li>
-                                                <a href="{% url 'blog:detail' po_new.pk %}" class="frame"><img  alt="" src="{% static 'qihuan/images/content/post-small3.jpg' %}"></a>
+                                                <a href="{% url 'blog:detail' po_new.pk %}" class="frame"><img  alt="" src="{% static  img_url %}"></a>
                                                 <div class="indentleft">
                                                 <h3><a href="{% url 'blog:detail' po_new.pk %}">{{ po_new.title }}</a></h3>
                                                 <span class="smalldate">{{ po_new.modify_time }} </span>

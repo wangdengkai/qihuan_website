@@ -1,59 +1,37 @@
 {% extends "blog/index.html" %}
 {% load highlight %}
+{% load staticfiles %}
 
 
-{% block base_left %}
-{% if query %}
+{% block post_content %}
+	{% if query %}
 
-	<ul class="sea_ul index_get_post nav ">
-		<li><h5>搜索结果</h5></li>
-		{% for result in page.object_list %}
-			<li><a href="{{ result.object.get_absolute_url }}" data-postid="{{ result.object.pk }}" data-posttitle="{{ result.object.title }}">
-				{% highlight result.object.title with query %}
-			</a></li>
-			
-		{% empty %}
-			<li><span>没有搜索到,换个关键词试试</span></li>
-		{% endfor %}
-	</ul>
-	<ul class="nav navbar-nav ul-border getPost">
 	
-			{% if page.has_previous %}
-				<li  class="f-si bd-rd bg-col-gre "><a  class="f-col-r" href="?q={{ query }}&amp;page={{ page.previous_page_number }}">
-				上一页</a></li>		
-
-			{% endif %}
-			<li  ><p>第{{ page.number }}页/共{{ paginator.num_pages }}页</p></li>
-			{% if page.has_next %}
-				<li class="f-si bd-rd bg-col-gre "><a  class="f-col-r" href="?q={{ query }}&amp;page={{ page.next_page_number }}" >下一页</a></li>
-			{% endif %}
-		
-	</ul>
-{% endif %}
-{% endblock base_left %}
-
-
-{% block sea_post %}
-  <div id="hide_sea">
-	
-		{% for result in page.object_list %}
-			<ul class="sea_ul  index_get_post nav nvabar-nav">
+		  <div id="hide_sea">
 			
+				{% for result in page.object_list %}
+					<article class="post">
+                                    <h2 class="posttitle"><a href="{% url 'blog:detail' result.object.pk %}">{% highlight result.object.title with query %}</a></h2>
+                                    <div class="entry-utility">
+                                        {{ result.object.modify_time }} <a href="#">{{ result.object.author }}</a>
+                                    </div>
+                                    <div class="postimg frame">
+                                        <img src="{{ result.object.post_img.url  }}" alt=""  />
+                                    </div>
+                                    <div class="entry-content">
+                                        <p>{% highlight result.object.summary with query %}</p>
+                                        <a href="{% url 'blog:detail' result.object.pk %}" class="button">查看详情</a>
+                                    </div>
+                    </article>
+
 					
-					<li class="page-header"><h5 class="text-center ">{% highlight result.object.title with query %}</h5></li>
-					<li class="continue-read"><p class="te-ind-20">{% highlight result.object.summary with query %}...&nbsp;&nbsp;</p></li>
-					<li ><a href="{% url 'blog:detail' result.object.pk %}"  data-postid="{{ result.object.pk }}" data-posttitle="{{ result.object.title }}">继续阅读</a></li>
+				{% empty %}
 			
-			</ul>
-		{% empty %}
-	
-		<h5>没有搜索到相关文章,请修改关键字试试</h5>
-	{% endfor %}
-	
-  </div>
+				<h5>没有搜索到相关文章,请修改关键字试试</h5>
+			{% endfor %}
+			
+		  
 
-  <h2 id="post_title" class="text-center"></h2><br><br>
+	{% endif %}
 
-	<p id="post_body"></p>
-{% endblock sea_post %}
-
+{% endblock post_content %}

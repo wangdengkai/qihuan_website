@@ -54,19 +54,13 @@
                             <ul>
                                 <li><a href="{% url 'qihuan:forum' %}">论坛</a></li> 
                                 
-                                <li><a href="javascript:;">下载</a>
-                                    <ul>
-                                        <li><a href="#">项目</a></li>
-                                        <li><a href="#">文章</a></li>
-                                        <li><a href="#">图片</a></li>
-                                    </ul>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
                         <li><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
                         <li><a href="{% url 'blog:index' %}">博客</a></li>
-                        <li><a href="{% url 'qihuan:contact' %}">联系</a></li>  
+                        <li><a href="">下载</a></li>  
                         <li><a href="javascript:;">商城</a></li>  
                     </ul><!-- topnav -->
                     {% endblock current_menu %}
@@ -104,10 +98,10 @@
 
 
 
-                        <form method="get" id="searchform" action="#">
+                        <form method="get" id="searchform" action="{% url 'haystack_search' %}",method="GET">
                             <div>
-                            <input type="text" class="field" name="s" id="s"  />
-                            <input type="submit" class="button_src" name="submit" id="searchsubmit" value="search" />
+                            <input type="aearch" class="field" name="q" id="s"  />
+                            <input type="submit" class="button_src" name="submit" id="searchsubmit" value="搜索" />
                             </div>
                         </form>
 
@@ -147,36 +141,34 @@
                         <div id="footcol1" class="three columns">
                             <ul>
                                 <li class="widget-container category">
-                                    <h2 class="widget-title">官网</h2>
-                                    <div id="tweets"></div><!-- twitter container (don't remove) -->
+                                    <h2 class="widget-title">官网</h2>                                    
                                 </li>
-                            </ul>
-                        </div>
-                        <div id="footcol2"  class="three columns">
-                            <ul>
-                                <li class="widget-container">
-                                    <h2 class="widget-title">社交</h2>
-                                    <ul class="sn">
-                                        <li><a href="#" title="Twitter"><span class="icon-img twitter"></span></a></li>
-                                        <li><a href="#" title="Google+"><span class="icon-img google"></span></a></li>
-                                        <li><a href="#" title="RSS"><span class="icon-img rss"></span></a></li>
-                                        <li><a href="#" title="RSS"><span class="icon-img picasa"></span></a></li>
-                                        <li><a href="#" title="Facebook"><span class="icon-img facebook"></span></a></li>
-                                        <li><a href="#" title="Pinterest"><span class="icon-img pinterest"></span></a></li>
-                                    </ul> 
-                              </li>
+                                <li><a href="#">首页</a></li>
                             </ul>
                         </div>
                         <div id="footcol3"  class="three columns">
                             <ul>
                                 <li class="widget-container">
-                                    <h2 class="widget-title">关于我们</h2>
+                                    <h2 class="widget-title">我的社交主页</h2>
+                                    <ul class="sn"><br>
+                                        <li><a href="https://github.com/wangdengkai/wangdengkai.github.io">github</a></li><br>
+                                        <li><a href="https://blog.csdn.net/weixin_42040854">csdn</a></li><br>
+                                        <li><a href="https://segmentfault.com/u/wangdengkai/activities">segmentfault</a></li><br>
+                                    
+                                    </ul> 
+                              </li>
+                            </ul>
+                        </div>
+                        <div  id="footcol2" class="three columns">
+                            <ul>
+                                <li class="widget-container">
+                                    <h2 class="widget-title">友情链接</h2>
                                     <ul>
-                                        <li><a href="#">在线联系</a></li>
-                                        <li><a href="#">设计模式</a></li>
-                                        <li><a href="#">获取数据</a></li>
-                                        <li><a href="#">相关支持</a></li>
-                                        <li><a href="#">进入内部</a></li>
+                                        <li><a href="https://www.liaoxuefeng.com/">廖雪峰</a></li>
+                                        <li><a href="https://code.ziqiangxuetang.com/">自强学堂</a></li>
+                                        <li><a href="https://www.zmrenwu.com/">追梦人物</a></li>
+                                        <li><a href="https://www.imooc.com/">慕课网</a></li>
+                                        <li><a href="https://www.oschina.net/">开源中国</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -186,8 +178,7 @@
                                 <li class="widget-container">
                                     <h2 class="widget-title">联系</h2>
                                     <div class="textarea">
-                                        <img  alt="" src="{% static 'qihuan/images/phone.png' %}">
-                                        <div class="phone">+188 8899 8899</div>
+                                        <address>wangdengkaiwy@163.com</address><br>
                                         <a href="#">地址:中国河南省商丘市</a>
                                     </div>
                               </li>
