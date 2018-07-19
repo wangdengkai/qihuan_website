@@ -50,7 +50,7 @@
                     {% block current_menu %}
                     <ul id="topnav" class="sf-menu">                        
                         <li class="current"><a href="{% url 'qihuan:index' %}">首页</a></li>
-                        <li><a href="{% url 'qihuan:web' %}">网站开发</a>
+                        <li><a href="{% url 'qihuan:web' %}">WEB</a>
                             
                         </li>
                         <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
@@ -127,9 +127,11 @@
    
         
         {% block footer %}
+            <a href="#" class="go_top"><img src="{% static 'blog/images/to_top.png' %}"/></a>
+
         <!-- FOOTER -->
         <footer id="footer">
-
+            
             <!-- FOOTER SIDEBAR -->
             <div id="outerfootersidebar">
                 <div class="container">
@@ -209,6 +211,7 @@
 <!-- CSS
   ================================================== -->
     <link rel="stylesheet" href="{% static 'blog/css/index.css' %}"/>
+    <link rel="stylesheet" href="{% static 'blog/css/base.css' %}"/>
     <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'qihuan/css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'qihuan/css/inner.css' %}" />

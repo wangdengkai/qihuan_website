@@ -15,9 +15,11 @@
                                     <div class="entry-utility">
                                         {{ result.object.modify_time }} <a href="#">{{ result.object.author }}</a>
                                     </div>
-                                    <div class="postimg frame">
-                                        <img src="{{ result.object.post_img.url  }}" alt=""  />
-                                    </div>
+                                    {% if post.post_img != '0' %}
+                                        <div class="postimg frame">
+                                            <img src="{{ post.post_img.url }}" alt=""  />
+                                        </div>
+                                    {% endif %}
                                     <div class="entry-content">
                                         <p>{% highlight result.object.summary with query %}</p>
                                         <a href="{% url 'blog:detail' result.object.pk %}" class="button">查看详情</a>

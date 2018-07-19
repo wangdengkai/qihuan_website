@@ -64,3 +64,8 @@ li{
 .no-listy{
 	list-style: none;
 }
+.go_top{
+	position:fixed;
+	right:300px;
+	bottom:100px;
+}

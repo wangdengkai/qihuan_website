@@ -11,12 +11,10 @@
  {% block current_menu %}
                     <ul id="topnav" class="sf-menu">                        
                         <li><a href="{% url 'qihuan:index' %}">首页</a></li>
-                        <li><a href="{% url 'qihuan:web' %}">网站开发</a>
-                            
-                        </li>
+                        <li><a href="{% url 'qihuan:web' %}">WEB</a></li>                        
                         <li><a href="{% url 'qihuan:reptile' %}">爬虫</a></li>
                         <li><a href="{% url 'qihuan:intelligence' %}">人工智能</a></li>
-                        <li  class="current"><a href="{% url 'blog:index' %}">博客</a></li>
+                        <li class="current"><a href="{% url 'blog:index' %}">博客</a></li>
                         <li><a href="{% url 'qihuan:download' %}">下载</a></li>  
                         <li><a href="https://github.com/wangdengkai?tab=repositories">MyGit</a></li>    
                     </ul><!-- topnav -->
@@ -183,16 +181,7 @@
                                 {% endfor %}
                                 </ul>
                             </li>
-                            <li class="widget-container">
-                                <h2 class="widget-title">其他站点</h2>
-                                <div class="flickr">
-                                    
-                                    <a href="#" class="frame"><img  alt="" src="{% static 'qihuan/images/content/g2.jpg' %}"></a>
-                                    <a href="#" class="frame nomargin"><img  alt="" src="{% static 'qihuan/images/content/g3.jpg' %}"></a>
-                                    <a href="#" class="frame"><img  alt="" src="{% static 'qihuan/images/content/g4.jpg' %}"></a>
-                                
-                                </div>
-                            </li>
+                            
                             
                         </ul>
                         </div>
@@ -208,20 +197,10 @@
  
 <script type="text/javascript" src="{% static 'blog/js/index.js' %}"></script>
 
-<!-- jQuery Flexslider -->
-<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
-<script type="text/javascript">
-jQuery(window).load(function() {
-    jQuery('.flexslider').flexslider({
-          animation: "fade",              //String: Select your animation type, "fade" or "slide"
-          directionNav: true, //Boolean: Create navigation for previous/next navigation? (true/false)
-          controlNav: false  //Boolean: Create navigation for paging control of each clide? Note: Leave true for manualControls usage
-        });
-});
-</script>
+{% block add_index_js %}    
+{% endblock add_index_js %} 
  
 {% endblock add_js %} 
 
-{% block add_index_js %}    
-{% endblock add_index_js %} 
+
 

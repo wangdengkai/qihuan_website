@@ -1,8 +1,15 @@
 
-<form action="{% url 'common:common_form' post.pk common_pk %}" method="post" class="id_form form" data-commonid="{{ common_pk }}" data-postid="{{ post.pk }}">
-<div class="form-group">	
-	{% csrf_token %}
-	{{ form.as_p }}
-	<input type="submit" class="form-control" "value="submit" id="subbutton" />
+<div class="flex-center">
+    <div class="container">
+        <div class="flex-center">            
+
+					<form action="{% url 'common:common_form' post.pk common_pk %}" method="post" class="id_form form" data-commonid="{{ common_pk }}" data-postid="{{ post.pk }}">
+					<div class="form-group">	
+						{% csrf_token %}
+						{{ form.as_p }}
+						<input type="submit" class="form-control" "value="submit" id="subbutton" />
+					</div>
+					</form>			
+        </div>
+    </div>
 </div>
-</form>

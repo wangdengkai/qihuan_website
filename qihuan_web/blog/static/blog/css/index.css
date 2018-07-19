@@ -25,7 +25,10 @@
 }
 
 .f-col-b{
-	color:gray;
+	color:blue;
+}
+.f-col-y{
+	color:yellow;
 }
 .mar-gin{
 	margin:0;
@@ -44,6 +47,9 @@
 }
 .te-ind-20{
 	text-indent:50px;
+}
+.te-ind-200{
+	text-indent:150px;
 }
 .like{
 	width:50px;
@@ -76,4 +82,7 @@ pre{
 }
 .errorlist {
    color: red;
+}
+.li_s_no{
+	list-style:none;
 }

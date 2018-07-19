@@ -1,5 +1,5 @@
 import datetime
-
+import re
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404,redirect
 from django.http  import JsonResponse,HttpResponse
@@ -31,7 +31,6 @@ def post_common_form(request,post_pk,common_pk):
 
 	# #获取up_common 对象
 	
-
 	if request.method == "POST":
 
 		#生成表单对象,
@@ -50,12 +49,13 @@ def post_common_form(request,post_pk,common_pk):
 			common.save()
 			#重定向到文章详情页,实际上
 			# return render(request,"blog/detail.html")
-			return JsonResponse({"true":"true","postId":post.pk})
+			# return JsonResponse({"true":"true","postId":post.pk})
 			# return HttpResponse({"true":"true"})
-			# return 
+			return redirect(post)
 		else:
 			#检测到数据不合法,重定向到获取表单
-			return JsonResponse({"false":"false","postId":post.pk})
+			return redirect(post)
+
 			# return HttpResponseRedirect(post)
 			# return 
 			# return render(request,"blog/detail.html")
@@ -82,7 +82,7 @@ def get_post_common(request,post_pk,common_pk=0):
 	# # # //获得post对象里的所有common
 	common_list=post.common_set.all()
 	
-	response='<h2>%s个评论</h2><ol class="commentlist">'%len(common_list)
+	response='<h2>%s个评论</h2><ol class="commentlist li_s_no">'%len(common_list)
 	# # # //对所有common进行封装
 	response=iter_common(request,common_list,post_pk,common_pk)+"</ol>"	
 	
@@ -111,23 +111,26 @@ def iter_common(request,common_list,post_pk,common_pk):
 			#渲染这个common_post
 			response +="""				
 
-					<div class="comment-body">
-	                    <div class="avatar-img frame">
-	                    	<img src="--" alt="" class="avatar"/>
+					<div>
+	                   
+	               		<div>
+	               		<h5><span class="f-col-b">%s&nbsp;&nbsp;说:</span></h5> </div>
+	                    <div>
+	                        <p class="te-ind-20">%s</p>
 	                    </div>
-	                		<cite class="fn"><a href="#">用户名:%s</a> <span class="commonTime flo-r">时间:%s</span></cite>
-	                    <div class="commenttext">
-	                        <p>%s</p>
-	                    </div>
-	                     <button type="buttton" data-postid="%s" data-commonid="%s" class="req_common flo-r">回复</button>
-	                     <div class="sub_common">
-						</div>
+	                    	<p class="flo-r">
+	                    	<span class="commonTime">时间:%s</span>&nbsp;&nbsp;&nbsp&nbsp;
+	                     <a  data-postid="%s" data-commonid="%s" class="req_common">回复</a>
+	                     	</p>
+	                     <div class="sub_common bg-col-FAD">
+						 </div>
+						<br/>
 	                </div>
 
-					"""%(common.name,create_time,common.text,post_pk,common.pk)	
+					"""%(common.name,common.text,create_time,post_pk,common.pk)	
 			if len(common_list.filter(up_common=common.pk)) > 0:
 				#迭代,对评论的评论进行封装
-				response+="<ol>"+iter_common(request,common_list,post_pk,common.pk)+"</ol>"
+				response+='<ol class="li_s_no">'+iter_common(request,common_list,post_pk,common.pk)+"</ol>"
 		
 
 		

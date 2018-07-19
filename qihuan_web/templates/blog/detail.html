@@ -14,6 +14,10 @@
         </div>
         <!-- END TITLE -->
 {% endblock base_slider %}
+{% block link %}
+    <link rel="stylesheet" href="https://unpkg.com/mobi.css/dist/mobi.min.css"> 
+{% endblock link %}
+
 
 {% block section %}
                     
@@ -23,45 +27,41 @@
                                     
                                     <div class="entry-utility"><a href="#">{{ post.author }}|</a>  {{ post.modify_time }}                                     
                                     </div>
-                                    <div class="postimg frame">
-                                        <img src="images/content/post1.jpg" alt=""  />
-                                    </div>
+                                    {% if post.post_img != '0' %}
+                                        <div class="postimg frame">
+                                            <img src="{{ post.post_img.url }}" alt=""  />
+                                        </div>
+                                    {% endif %}
                                     <div class="entry-content">
                                         {{ post.body |safe }}
                                     </div>
                                 </article>
                                 
-								<h4>更多</h4>     
-                                <ul class="recent-post">
-                                    <li><a href="#">上一篇文章名</a></li>
-                                    <li><a href="#">下一篇文章名</a></li>                                 
-                                </ul>  
+								
                                 
 								<div id="entry-author-info">
                                 	<h4>博主详情</h4>
                                     <div id="author-avatar">
-                                        <img alt="" src="images/content/author.gif" class="frame">                                
+                                        <img alt="" src="{% static 'qihuan/images/content/author.gif' %}" class="frame">                                
                                     </div><!-- author-avatar -->
                                     <div id="author-description">
                                         <div class="author">博主:玄锷无梦</div>
-                                        <p>玄锷无梦,通信工程专业高材生!熟悉掌握python
-                                        语言,熟悉python框架flask,django,scrapy等,对人工智能也有研究.对于redis,mysql等数据库也很熟悉.linux熟练使用.分布式系统熟练掌握. </p>
-                                    <ul class="sn">
-                                        <li><a href="#" title="Twitter"><span class="icon-img twitter"></span></a></li>
-                                        <li><a href="#" title="Facebook"><span class="icon-img facebook"></span></a></li>
-                                        <li><a href="#" title="Pinterest"><span class="icon-img pinterest"></span></a></li>
-                                    </ul>                              
+                                        <p>玄锷无梦,通信工程专业高材生!<br/>熟悉掌握python
+                                        语言,熟悉python框架flask,django,scrapy等<br/>
+                                        对人工智能也有研究.对于redis,mysql等数据库也很熟悉.linux熟练使用.分布式系统熟练掌握. <br/>结合以上技术开发了很多相关项目.</p>
+                                          
                                     </div><!-- author-description	-->
                                     <div class="clear"></div>
                                 </div>  
-
+                                <p>
                                 <a href="{% url 'blog:like' post.pk 1 %} " id="cpostlike" class="flo-l"><img  class='like ' src="{% static 'blog/images/like.jpg' %}"/>(<span id="likenumber">{{ post.like_number }}</span>)</a>
                                 
                                 <a  id="postcom" data-postid="{{ post.pk }}"  data-commonid=0 class="req_common flo-r">
                                 <img  class='common ' src="{% static 'blog/images/common.jpg' %}"/>评论</a>
+                                </p>
                                 
 
-                                <div class="sub_common">                        
+                                <div class="sub_common bg-col-FAD">                        
 								<section id="comment">
 
                                     
