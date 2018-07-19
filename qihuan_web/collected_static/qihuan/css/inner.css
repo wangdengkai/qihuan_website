@@ -1,0 +1,221 @@
+/* 
+
+Marchie - CSS File
+
+USE THIS STYLE SHEET FOR INNER PAGE
+
+*/
+
+
+
+/* Page Navi*/
+.wp-pagenavi {padding:0px 0 0; font-size:13px;  display:block; margin-bottom:20px;}
+.wp-pagenavi .pages{padding-right:10px; padding-top:3px; float:left;}
+.wp-pagenavi a, .wp-pagenavi a:visited{padding:4px 10px; margin:0 2px; float:left;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+}
+.wp-pagenavi .current{padding:4px 10px; margin:0 2px; float:left;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+}
+
+
+
+/* BLOG */
+.post{margin-bottom:47px; padding-bottom:46px; }
+.single .post{ padding-bottom:26px;}
+
+.posttitle{padding: 0px; margin-bottom:7px; display:inline-block;}
+.posttitle, .posttitle a{font-size:30px; text-decoration:none;}
+.posttitle a:hover{text-decoration:none;}
+
+.postimg{ margin-bottom:9px;}
+.postimg img{ display:block}
+
+.entry-utility{padding:0px 0 24px 0; clear:both; font-size:11px; }
+
+#entry-author-info{ clear:both; margin-bottom:46px; padding-bottom:46px;}
+#author-avatar{ float:left; margin-right:19px;}
+#author-description{ overflow:hidden;}
+#author-description .author{ font-size:13px; text-transform:uppercase; margin-bottom:5px;}
+
+
+.related-post{margin-bottom:20px; float:left}
+
+#comment h2{ display:block; font-size:18px; margin-bottom:16px;}
+.commentlist{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.commentlist ol{
+	list-style-type:none;
+	padding:10px 0 0 85px;
+	margin:0;
+}
+
+.commentlist li{
+	position:relative;
+	padding:0 0 10px 0;
+}
+.commentlist li li{
+	position:relative;
+	padding:0;
+}
+
+.avatar-img{
+	position:absolute;
+	top:0px;
+	left:0px;
+
+}
+.avatar{display:block; }
+.fn{font-size:13px; display:block; text-transform:uppercase; margin-bottom:5px;}
+
+.commenttext{ padding-top:0px;}
+.tdate, .reply{ font-size:11px;}
+.reply a, .reply a:visited{ color:#888;}
+.reply a:hover{text-decoration:underline;}
+.fn a, .fn a:visited{ color:#888;}
+
+.comment-body{margin:0px 0 0 0px; padding:0px; margin-left:112px;}
+
+#commentform {margin-bottom:20px}
+#commentform label{display:block}
+#commentform .text-input{
+	margin-bottom:8px;
+	padding:8px 5px;
+	vertical-align:middle;
+}
+#commentform .textarea{
+	margin-bottom:20px;
+	padding:8px 5px;
+	vertical-align:top;
+}
+
+/* PORTFOLIO */
+
+/*======= Portfolio Navigation =======*/
+
+#filter{list-style-type:none; padding:0px 0px;	margin:5px 0 27px 0;}
+#filter li{list-style-type:none; display:inline-block; padding-bottom:11px; }
+#filter li a, #filter li a:visited{padding:10px 18px;  font-size:11px; line-height:normal;}
+
+/*======= End Portfolio Navigation =======*/
+
+.img-wrapper{position:relative; margin-bottom:20px;}
+.img-wrapper h2{ margin-bottom:14px; font-size:14px;}
+.img-wrapper img{ display:block;}
+.img-wrapper{
+	overflow:hidden;
+	display:block;	
+	position:relative;
+}
+.img-wrapper a.image{
+	display:block;
+	position:relative;
+	overflow:hidden;
+}
+.img-wrapper .rollover{
+	background: url(../images/opacity.png);
+	display:block;
+    position:absolute;
+	z-index:10;
+	display:none;
+	cursor:pointer;
+	width:100%;
+	height:100%;
+}
+
+.img-wrapper .text-wrapper{ 
+	display: table;
+	position:absolute;
+	width:80%;
+	height:100%;
+	left:10%;
+
+}
+
+.img-wrapper .text{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;	
+}
+.img-wrapper .text h2{ margin-bottom:11px;}
+.img-wrapper .text p{ margin-bottom:0px;}
+
+/* ---------------------------- */
+/*       Isotope plugin
+/* ---------------------------- */
+
+.isotope-item {
+	z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+	pointer-events: none;
+	z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+	-webkit-transition-duration: 0.8s;
+	-moz-transition-duration: 0.8s;
+	-o-transition-duration: 0.8s;
+	transition-duration: 0.8s;
+}
+
+.isotope {
+	-webkit-transition-property: height, width;
+	-moz-transition-property: height, width;
+	-o-transition-property: height, width;
+	transition-property: height, width;
+}
+
+.isotope .isotope-item {
+	-webkit-transition-property: -webkit-transform, opacity;
+	-moz-transition-property: -moz-transform, opacity;
+	-o-transition-property: top, left, opacity;
+	transition-property: transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+	-webkit-transition-duration: 0s;
+	-moz-transition-duration: 0s;
+	-o-transition-duration: 0s;
+	transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+/* CONTACT */
+form{margin:0; padding:0;}
+fieldset{border:0px;}
+#contactform{margin:0 auto; position:relative; }
+#contactform label{display:block; width:100%; float:left; padding-bottom:5px;}
+span.error{color:red;text-align:left; font-size:11px; padding-bottom:15px; display:block;}
+#contactform input.text-input{
+	margin-bottom:15px;
+	vertical-align:middle;
+	width:50%;
+	float:left;
+	padding:10px;
+}
+#contactform textarea{ width:97%; float:left;} 
+#message{ margin-left:0px; font-weight:bold;}
+#message h2	{}
+#message p{margin:6px 0px; }
+
+#contactform .button{
+	cursor:pointer;
+	margin-top:20px;
+	float:left;
+ }

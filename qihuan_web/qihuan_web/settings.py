@@ -19,9 +19,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '3ho(ji)7b+ud=oq&ac$6q&um&9#z4*l$&v-!2n#z^k*n$-$wu3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1']
 
 
 # Application definition
@@ -146,7 +146,7 @@ LOGIN_REDIRECT_URL = '/'
 
 STATIC_URL = '/static/'
 STATICFIFLES_DIRS=[os.path.join(BASE_DIR,'static'),]
-STATIC_ROOT =os.path.join(BASE_DIR,'collected_static')
+STATIC_ROOT =os.path.join(BASE_DIR,'static')
 
 HAYSTACK_CONNECTIONS ={
     'default':{
